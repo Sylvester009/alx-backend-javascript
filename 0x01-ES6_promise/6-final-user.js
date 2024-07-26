@@ -7,7 +7,7 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
   try {
     const user = await signUpUser(firstName, lastName);
     settled.push({
-      status: 'fulfilled',
+      status: 'resolved',
       value: user,
     });
   } catch (error) {
@@ -20,7 +20,7 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
   try {
     const photo = await uploadPhoto(fileName);
     settled.push({
-      status: 'fulfilled',
+      status: 'resolved',
       value: photo,
     });
   } catch (error) {
