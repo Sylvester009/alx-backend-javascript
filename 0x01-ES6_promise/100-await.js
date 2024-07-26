@@ -1,14 +1,26 @@
-/**Import uploadPhoto and createUser from utils.js
+#!/usr/bin/node
 
-Write an async function named asyncUploadUser that will call these two functions and return an object with the following format:
+import { uploadPhoto, createUser } from './utils';
 
-{
-  photo: response_from_uploadPhoto_function,
-  user: response_from_createUser_function,
+async function asyncUploadUser() {
+  try {
+    const uploadPhotoPromise = await uploadPhoto();
+    const createUserPromise = await createUser();
+
+    const [uploadPhotoResponse, createUserResponse] = await
+      Promise.all([uploadPhotoPromise, createUserPromise]);
+
+    return {
+      photo: uploadPhotoResponse,
+      user: createUserResponse,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      photo: null,
+      user: null,
+    };
+  }
 }
-If one of the async function fails, return an empty object. Example:
 
-{
-  photo: null,
-  user: null,
-} */
+export default asyncUploadUser;
