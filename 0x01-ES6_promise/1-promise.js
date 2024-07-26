@@ -7,7 +7,7 @@ function getFullResponseFromAPI(success) {
     if (success === true) {
       resolve({
         status: 200,
-        body: "Success",
+        body: "Success"
       });
     } else if (success === false) {
       reject(new Error("The fake API is not working currently"));
