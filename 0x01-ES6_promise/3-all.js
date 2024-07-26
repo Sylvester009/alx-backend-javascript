@@ -1,6 +1,13 @@
-/*In this file, import uploadPhoto and createUser from utils.js
+#!/usr/bin/node
 
-Knowing that the functions in utils.js return promises, use the prototype below to collectively resolve all promises and log body firstName lastName to the console.
+import { uploadPhoto, createUser } from "./utils.js";
 
-function handleProfileSignup()
-In the event of an error, log Signup system offline to the console*/
+export default function handleProfileSignup() {
+  return Promise.all([uploadPhoto(), createUser()])
+    .then((info) => {
+      console.log(`${info[0].body} ${info[1].firstName} ${info[1].lastName}`);
+    })
+    .catch(() => {
+      console.log("Signup system offline");
+    });
+}

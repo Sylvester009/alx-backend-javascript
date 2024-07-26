@@ -3,11 +3,11 @@
 // Using the prototype below, return a promise. The parameter is a boolean.
 
 export default function getFullResponseFromAPI(success) {
-    return new Promise(function(resolve, reject){
+    return new Promise((resolve, reject) => {
       if (success === true) {
         resolve({
-          body: "Success",
-          status: 200
+            status: 200,
+            body: "Success"
         });
       } else if (success === false) {
         reject(new Error("The fake API is not working currently"));
