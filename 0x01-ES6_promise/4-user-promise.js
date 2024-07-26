@@ -1,12 +1,10 @@
-/**Using the following prototype
-
-function signUpUser(firstName, lastName) {
+export default function signUpUser(firstName, lastName) {
+  return new Promise((resolve) => {
+    if (firstName && lastName) {
+      resolve({
+        firstName,
+        lastName,
+      });
+    }
+  });
 }
-That returns a resolved promise with this object:
-
-{
-  firstName: value,
-  lastName: value,
-} */
-
-#!
