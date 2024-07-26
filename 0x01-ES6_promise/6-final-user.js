@@ -1,11 +1,33 @@
-/**Import signUpUser from 4-user-promise.js and uploadPhoto from 5-photo-reject.js.
+import signUpUser from './4-user-promise';
+import uploadPhoto from './5-photo-reject';
 
-Write and export a function named handleProfileSignup. It should accept three arguments firstName (string), lastName (string), and fileName (string). The function should call the two other functions. When the promises are all settled it should return an array with the following structure:
+export default async function handleProfileSignup(firstName, lastName, fileName) {
+  const settled = [];
 
-[
-    {
-      status: status_of_the_promise,
-      value: value or error returned by the Promise
-    },
-    ...
-  ] */
+  try {
+    const user = await signUpUser(firstName, lastName);
+    settled.push({
+      status: 'resolved',
+      value: user,
+    });
+  } catch (error) {
+    settled.push({
+      status: 'rejected',
+      value: error.toString(),
+    });
+  }
+
+  try {
+    const photo = await uploadPhoto(fileName);
+    settled.push({
+      status: 'resolved',
+      value: photo,
+    });
+  } catch (error) {
+    settled.push({
+      status: 'rejected',
+      value: error.toString(),
+    });
+  }
+  return settled;
+}
