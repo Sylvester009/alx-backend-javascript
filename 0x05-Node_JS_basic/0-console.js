@@ -4,7 +4,7 @@
  * prints argument to STDOUT
  */
 
-function displayMessage(arg){
+const displayMessage = (arg) => {
     console.log(arg);
 }
 
