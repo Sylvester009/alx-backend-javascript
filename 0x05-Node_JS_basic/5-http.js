@@ -15,21 +15,16 @@ const app = http.createServer((req, res) => {
 
       const dbPath = path.join(__dirname, 'database.csv');
 
-      try {
-        countStudents(dbPath)
-          .then(data => {
-            res.write('This is the list of our students\n');
-            res.write(data);
-            res.end();
-          })
-          .catch(error => {
-            res.write('Cannot load the database\n');
-            res.end();
-          });
-      } catch (error) {
-        res.write('Cannot load the database\n');
-        res.end();
-      }
+      countStudents(dbPath)
+        .then(data => {
+          res.write('This is the list of our students\n');
+          res.write(data);
+          res.end();
+        })
+        .catch(error => {
+          res.write('Cannot load the database\n');
+          res.end();
+        });
     } else {
       res.statusCode = 404;
       res.setHeader('Content-Type', 'text/plain');
