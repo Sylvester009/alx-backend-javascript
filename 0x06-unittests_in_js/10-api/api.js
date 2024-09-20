@@ -15,7 +15,7 @@ app.get('/available_payments', (req, res) => {
     payment_methods: {
       credit_cards: true,
       paypal: false
-    };
+    }
   };
 
   res.json(obj)
