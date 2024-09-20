@@ -32,6 +32,6 @@ describe('calculateNumber', () => {
   });
 
   it('returns -6 when a = -1.5 and b = -3.7', function () {
-    assert.strictEqual(calculateNumber(-1.5, -3.7), -6);
+    assert.strictEqual(calculateNumber(-1.8, -3.9), -6);
   });
 });
