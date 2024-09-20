@@ -2,7 +2,7 @@ const request = require('request');
 const { expect } = require('chai');
 
 describe('API integration test', () => {
-  const API_URL = 'http://localhost:7865';
+  const URL = 'http://localhost:7865';
 
   const testCases = [
     { path: '/', expectedStatus: 200, expectedBody: 'Welcome to the payment system' },
@@ -12,11 +12,11 @@ describe('API integration test', () => {
   ];
 
   testCases.forEach(({ path, expectedStatus, expectedBody }) => {
-    it(`GET ${path} returns correct response`, (done) => {
-      request.get(`${API_URL}${path}`, (_err, res, body) => {
+    it(`GET ${path} returns correct response`, (final) => {
+      request.get(`${URL}${path}`, (_err, res, body) => {
         expect(res.statusCode).to.equal(expectedStatus);
         if (expectedBody) expect(body).to.equal(expectedBody);
-        done();
+        final();
       });
     });
   });
